@@ -1,0 +1,24 @@
+{
+    "name": "studio770/utils",
+    "require-dev": {
+        "phpunit/phpunit": "^7.3",
+        "symplify/monorepo-builder": "^8.2"
+    },
+    "autoload": {
+        "psr-4": {
+            "Studio770\\AddWorkHours\\": "packages/addworkhours/src",
+            "YourMonorepo\\FirstPackage\\": "packages/first-package/src",
+            "YourMonorepo\\SecondPackage\\": "packages/second-package/src"
+        }
+    },
+    "replace": {
+        "studio770/addworkhours": "self.version",
+        "your-monorepo/first-package": "self.version",
+        "your-monorepo/second-package": "self.version"
+    },
+    "require": {
+        "php": "^7.2",
+        "symfony/dependency-injection": "^5.0",
+        "symfony/http-kernel": "^5.0"
+    }
+}

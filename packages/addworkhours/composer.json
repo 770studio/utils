@@ -1,0 +1,12 @@
+{
+    "name": "studio770/addworkhours",
+    "require": {
+        "php": "^7.2",
+        "symfony/dependency-injection": "^5.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Studio770\\AddWorkHours\\": "src"
+        }
+    }
+}
