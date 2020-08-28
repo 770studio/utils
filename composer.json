@@ -10,10 +10,10 @@
     },
     "autoload": {
         "psr-4": {
-            "Studio770Utils\\AddWorkHours\\": "packages/addworkhours/src"
+            "Studio770Utils\\": "packages/addworkhours/src"
         }
     },
     "replace": {
-        "studio770/addworkhours": "self.version"
+        "studio770utils/addworkhours": "self.version"
     }
 }
