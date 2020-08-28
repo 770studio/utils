@@ -6,7 +6,7 @@
     },
     "autoload": {
         "psr-4": {
-            "Studio770Utils\\AddWorkHours": "src"
+            "Studio770Utils\\AddWorkHours\\": "src"
         }
     }
 }
