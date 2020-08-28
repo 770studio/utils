@@ -1,6 +1,6 @@
 <?php
 
-namespace Studio770\AddWorkHours;
+namespace Studio770Utils;
  
 Class AddWorkHours
 {
