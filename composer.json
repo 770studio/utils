@@ -1,7 +1,7 @@
 {
     "name": "studio770/utils",
     "require": {
-        "php": "^7.2",
+        "php": "^7.1",
         "symfony/dependency-injection": "^5.0"
     },
     "require-dev": {
