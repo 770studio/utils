@@ -1,19 +1,37 @@
 {
     "name": "studio770/utils",
+    "autoload-dev": [],
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Nathanmac\\Utilities\\Parser\\ParserServiceProvider"
+            ],
+            "aliases": {
+                "Parser": "Nathanmac\\Utilities\\Parser\\Facades\\Parser"
+            }
+        }
+    },
     "require": {
         "php": "^7.1",
-        "symfony/dependency-injection": "^5.0"
+        "symfony/dependency-injection": "^5.0",
+        "symfony/yaml": "~2.0|~3.0|~4.0|~5.0"
     },
     "require-dev": {
+        "illuminate/support": "~5.0|~6.0|~7.0",
+        "mockery/mockery": "0.9.3",
         "phpunit/phpunit": "^7.3",
-        "symplify/monorepo-builder": "^8.2"
+        "scrutinizer/ocular": "^1.1",
+        "symplify/monorepo-builder": "^8.2",
+        "symplify/monorepo-builder-prefixed": "^8.3"
     },
     "autoload": {
         "psr-4": {
+            "Nathanmac\\Utilities\\Parser\\": "packages/nathanmac-parser/src/",
             "Studio770Utils\\": "packages/addworkhours/src"
         }
     },
     "replace": {
+        "nathanmac/parser": "self.version",
         "studio770utils/addworkhours": "self.version"
     }
 }
