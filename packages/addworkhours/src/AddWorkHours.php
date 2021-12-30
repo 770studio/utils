@@ -131,6 +131,22 @@ Class AddWorkHours
         }
         return date('Y-m-d', $current).' '.$time;
     }
+	
+    public function getWorkDaysDiffBetweenDates($date1, $date2, $holidays=[]) : int
+    {
+        $date1 = strtotime($date1);
+        $date2 = strtotime($date2);
+        $business_day_count = 0;
+        // TODO проверить разницу дат , максимально скажем год
+        while ($date1 < $date2) {
+            $date1 = strtotime('+1 weekday', $date1);
+            if (!in_array(date('d.m.Y', $date1), $holidays ?? $this->holidays, true)) {
+                $business_day_count++;
+            }
+
+        }
+        return $business_day_count;
+    }
 
     private function checkDate($date)
     {
