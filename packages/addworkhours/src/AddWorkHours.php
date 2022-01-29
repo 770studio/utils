@@ -2,7 +2,10 @@
 
 namespace Studio770Utils;
  
-Class AddWorkHours
+use Carbon\Exceptions\InvalidFormatException;
+use DateTime;
+
+class AddWorkHours
 {
 
     private $holidays;
@@ -22,9 +25,26 @@ Class AddWorkHours
             '5' => array('start' => '09:00:00', 'end' => '18:00:00'),
 //            '6' => array('start' => '10:00:00', 'end' => '16:00:00')
         );
-        $this->holidays = array('30.03.2020','31.03.2020','01.04.2020','02.04.2020','03.04.2020','01.05.2020','04.05.2020','05.05.2020','11.05.2020','12.06.2020','24.06.2020','31.07.2020'
-			       ,'31.12.2021', '01.01.2022', '02.01.2022', '03.01.2022', '04.01.2022', '05.01.2022', '06.01.2022', '07.01.2022', '08.01.2022', '09.01.2022'
-                            );
+        $this->holidays = array('30.03.2020', '31.03.2020', '01.04.2020', '02.04.2020', '03.04.2020', '01.05.2020', '04.05.2020', '05.05.2020', '11.05.2020', '12.06.2020', '24.06.2020', '31.07.2020'
+        , '31.12.2021', '01.01.2022', '02.01.2022', '03.01.2022', '04.01.2022', '05.01.2022', '06.01.2022', '07.01.2022', '08.01.2022', '09.01.2022'
+        );
+    }
+
+    /**
+     * @param array $holidays
+     * @return void
+     */
+    public function setHolidays($holidays)
+    {
+        $format = 'd.m.Y';
+        array_map(function ($holiday) use ($format) {
+            $date = DateTime::createFromFormat($format, $holiday);
+            if (!$date || $date->format($format) !== $holiday) {
+                throw new InvalidFormatException('incorrect date format');
+            }
+        }, $holidays);
+
+        $this->holidays = $holidays;
     }
 
     public function setHours($hours)
@@ -118,7 +138,7 @@ Class AddWorkHours
 
     public function getWorkDays($num_business_days, $today = null,$holidays=[])
     {
-		if(!$holidays) $holidays = $this->holidays;
+        if(!$holidays) $holidays = $this->holidays;
         $num_business_days = min($num_business_days, 30);
         $business_day_count = 0;
         $time=date('H:i:s',$today);
@@ -133,7 +153,7 @@ Class AddWorkHours
         }
         return date('Y-m-d', $current).' '.$time;
     }
-	
+
     public function getWorkDaysDiffBetweenDates($date1, $date2, $holidays=[]) : int
     {
         $date1 = strtotime($date1);

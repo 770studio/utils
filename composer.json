@@ -1,6 +1,6 @@
 {
     "name": "studio770/utils",
-    "autoload-dev": [],
+    "autoload-dev": {},
     "extra": {
         "laravel": {
             "providers": [
