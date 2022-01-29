@@ -47,6 +47,11 @@ class AddWorkHours
         $this->holidays = $holidays;
     }
 
+    public function getHolidays(): array
+    {
+        return $this->holidays;
+    }
+
     public function setHours($hours)
     {
         if ($this->type === 'work') {
